@@ -1,0 +1,4 @@
+#!/bin/sh
+curl -sf "wttr.in/?format=1" | awk '{print $2}'
+
+

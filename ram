@@ -1,0 +1,2 @@
+#!/bin/bash
+free -ht | awk '/^Mem/ {print $3}' 

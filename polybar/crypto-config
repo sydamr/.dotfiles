@@ -1,0 +1,6 @@
+[general]
+base_currency = MYR
+display = price
+
+[bitcoin]
+icon = 

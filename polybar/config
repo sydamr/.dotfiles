@@ -1,0 +1,745 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #282f3c
+background-alt = #444
+foreground = ${xrdb:color7:#222}
+;foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+color1 = #4c546b
+color2= #9ece6a
+color3= #ffcc00
+color4= #78a0fb
+color5= #A569BD
+color6= #7dcfff
+color7= #a9b1d6
+
+color8= #4c546c
+color9= #f7768e
+color10= #b3ec75
+color11= #e0af68
+color12= #7aa2f7
+color13= #bb9af7
+color14= #7dcfff
+color15= #c0caf5
+color16= #434c5e
+color17= #3b4252
+color18= #4c566a
+color19= #2e3440
+color20= #eceff4
+
+
+[bar/example]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 18
+;offset-x = 1%
+;offset-y = 1%
+radius = 4.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+border-size = 1
+border-color = ${colors.background}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "Roboto Mono Nerd Font:pixelsize=8.3;2"
+font-1 = Iosevka Nerd Font:style=Medium:size=13;3
+font-2 = M+ 1mn:style=bold:pixelsize=8;0
+font-3 = Material Design Icons:style=Bold:size=10;3
+
+
+modules-left = bspwm i3 sep left0 mpc right0
+modules-center =
+modules-right = left0 crypto right0 sep left0 filesystem right0 sep left0 uptime right0 sep left0 updates-pacman-aurhelper right0 sep left0 weather right0 sep left0 free right0 sep left0 temperature right0 sep left0 pulseaudio right0 sep left0 date right0
+
+tray-position = right
+tray-padding = 0
+;tray-background = #0063ff
+
+wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+;cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+format-background = #393b44
+format-foreground = #fff
+;format-underline = #87afd7
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#00ff6f} %used%/%total%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+label-mounted-background = ${colors.color1}
+label-mounted-underline = ${colors.background}
+label-mounted-overline = ${colors.background}
+
+[module/bspwm]
+type = internal/bspwm
+enable-click = true
+enable-scroll = true
+format-padding = 0
+
+icon-default = 
+
+format = <label-state>
+;format-background = ${color.rounds}
+
+;label-occupied =  
+label-active = 󰮯
+label-occupied = 
+label-urgent = 󰗶
+label-empty = 
+
+label-active-underline = ${colors.background}
+label-active-overline = ${colors.background}
+
+label-occupied-underline = ${colors.background}
+label-occupied-overline = ${colors.background}
+
+label-urgent-underline = ${colors.background}
+label-urgent-overline = ${colors.background}
+
+label-empty-underline = ${colors.background}
+label-empty-overline = ${colors.background}
+
+label-empty-padding = 1
+label-active-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+
+label-empty-foreground = ${colors.color10}
+label-empty-background = ${colors.color1}
+
+label-active-foreground = ${colors.color3}
+label-active-background = ${colors.color1}
+
+label-occupied-foreground = ${colors.color4}
+label-occupied-background = ${colors.color1}
+
+label-urgent-foreground = ${colors.color3}
+label-urgent-background = ${colors.color19}
+
+
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <toggle>  <label-song> <label-time> <icon-next>
+format-offline =  offline
+format-offline-underline = ${colors.background}
+format-offline-overline = ${colors.background}
+format-online-overline = ${colors.background}
+format-online-underline = ${colors.background}
+
+;format-offline-prefix-background = ##87afd7
+;format-offline-prefix-foreground = #0a0a0a
+;label-song-background = #87afd7
+;label-song-foreground = #000000
+format-online-background = ${colors.color1}
+format-online-foreground = #00ffe9
+format-offline-background = ${colors.color1}
+format-offline-foreground = #00ffe9
+
+
+icon-prev = 
+;icon-prev-foreground = #0a0a0a
+;icon-prev-background = #87afd7
+icon-stop = 
+;icon-stop-foreground = #0a0a0a
+;icon-stop-background = ##87afd7
+icon-play = 
+;icon-play-foreground = #0a0a0a
+;icon-play-background = #87afd7
+icon-pause = 
+;icon-pause-foreground = #0a0a0a
+;icon-pause-background = #87afd7
+icon-next = 
+label-song = %title%
+label-song-maxlen = 50
+label-song-ellipsis = true
+
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = ""
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #4bffdc
+label =  %mb_used% 
+;format-underline = #a081db
+format-background = #61b0ef
+format-foreground = #000000
+
+[module/wlan]
+type = internal/network
+interface = net1
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = vmnet8
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =    %d %b
+date-alt = %A, %d %B %Y
+
+time =  %H:%M
+time-alt = %H:%M:%S
+
+;format-prefix =
+;format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+format-background = #454b68
+format-foreground = #fff200
+
+label =  %date% %time%
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> 
+label-volume = 墳 %percentage%%
+label-volume-foreground = #00fff2
+format-volume-underline = ${colors.background}
+format-volume-overline = ${colors.background}
+label-volume-background = ${colors.color1}
+
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = true
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = #ffff8e
+
+click-right = pavucontrol
+
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+format-prefix = ""
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+format-background = ${colors.color1}
+format-foreground = #00ff71
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 20
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+;warn-temperature = 60
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
+;
+[module/right1]
+type = custom/text
+content-background = #4b5263
+content-foreground = #363949
+content = "%{T3} %{T-}"
+
+[module/right2]
+type = custom/text
+content-background = #3f4252
+content-foreground = #454b68
+content = "%{T3} %{T-}"
+
+[module/right3]
+type = custom/text
+content-background = #454b68
+content-foreground = #454b68
+content = "%{T3} %{T-}"
+
+[module/right4]
+type = custom/text
+content-background = #363949
+content-foreground = #3f4252
+content = "%{T3} %{T-}"
+
+[module/left1]
+type = custom/text
+content-background = #000000000
+content-foreground = #454b68
+content = "%{T3}%{T-}"
+
+[module/right5]
+type = custom/text
+content-background = {colors.background} 
+content-foreground = #454b68
+content = "%{T3} %{T-}"
+
+[module/left2]
+type = custom/text
+content-background = #00000000
+content-foreground = #333749
+content = "%{T3}%{T-}"
+
+[module/weather]
+type = custom/script
+interval = 1800
+format-prefix = " "
+format-prefix-foreground = #00ff9a
+exec = weather
+format-background = #4b5263
+format-foreground = #00ff9a
+click-left = kitty --hold -e curl -sf "https://wttr.in/~Ampang+Jaya"
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+
+[module/right6]
+type = custom/text
+content-background = #3f4252
+content-foreground = ${colors.color1}
+content = "%{T3} %{T-}"
+
+[module/notification-reddit]
+type = custom/script
+exec = ~/polybar-scripts/notification-reddit.sh
+interval = 60
+format-background = #ff9f6c
+format-foreground = #000000
+
+[module/right7]
+type = custom/text
+content-background = #c4ff76
+content-foreground = #ff9f6c
+content = "%{T3} %{T-}"
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/polybar-scripts/2updates-pacman-aurhelper.sh
+interval = 600
+format-background = ${colors.color1}
+format-foreground = #00ffc1
+click-left = kitty --hold -e sudo pacman -Syu 
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+
+[module/right8]
+type = custom/text
+content-background = #000000000
+content-foreground = ${colors.color1}
+content = "%{T3}%{T-}"
+
+[module/terminal]
+type = custom/text 
+content-foreground = #000000
+content-background = #7dcfff
+content = "  "
+click-left = kitty
+content-underline = #61b0ef
+
+
+[module/right9]
+type = custom/text
+content-background = #000000000
+content-foreground = #61afef
+content = "%{T3}%{T-}"
+
+[module/left3]
+type = custom/text
+content-background = #00000000
+content-foreground = #61afef
+content = "%{T3}%{T-}"
+
+[module/rofi]
+type = custom/text
+content-foreground = #000000
+content-background = #d41e4b
+content = "  "
+click-left = rofi -show drun -show-icons
+
+[module/space]
+type = custom/text
+content-background = #000000000 
+content = "  " 
+
+
+[module/browser]
+type = custom/text
+content-foreground = #000000 
+content-background = #7dcfff
+content-underline = #61b0ef
+content = "  " 
+click-left = librewolf
+
+[module/nemo]
+type = custom/text
+content-foreground = #000000 
+content-background = #7dcfff
+content-underline = #61b0ef
+content = "  " 
+click-left = nemo
+
+[module/free]
+type = custom/script
+exec = ~/ram
+interval = 1
+format-prefix = " "
+format-background = ${colors.color1}
+format-foreground = #a8ff00
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+
+[module/left4]
+type = custom/text
+content-background = #00000000
+content-foreground = #393b44
+content = "%{T3}%{T-}"
+
+[module/left0]
+type = custom/text
+content-background = #000000000
+content-foreground = ${colors.color1}
+content = "%{T3}%{T-}"
+content-underline = ${colors.background}
+content-overline = ${colors.background}
+
+[module/right0]
+type = custom/text
+content-background = #000000000
+content-foreground = ${colors.color1}
+content = "%{T3}%{T-}"
+content-underline = ${colors.background}
+content-overline = ${colors.background}
+
+[module/sep]
+type = custom/text
+content =|
+
+content-background = ${colors.background}
+content-foreground = ${colors.background}
+
+[module/uptime]
+type = custom/script
+exec = ~/polybar-scripts/uptime.sh
+interval = 30
+format-foreground = #aeff00
+format-background = ${colors.color1}
+format-prefix = " "
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+
+[module/crypto]
+type = custom/script
+interval = 300
+exec = /home/syed/.config/polybar/1crypto.py
+format-foreground = #00f6ff
+format-background = ${colors.color1}
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+
+[module/mpc]
+type = custom/script
+exec = ~/mpc.sh
+tail = true
+format-background = ${colors.color1}
+format-foreground = #00ffe9
+format-prefix = " " 
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+
+[module/sep1]
+type = custom/text
+content =|
+
+content-background = ${colors.colors1}
+content-foreground = ${colors.colors1}
