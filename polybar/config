@@ -183,9 +183,6 @@ label-occupied-background = ${colors.color1}
 label-urgent-foreground = ${colors.color3}
 label-urgent-background = ${colors.color19}
 
-
-
-
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -529,48 +526,6 @@ margin-top = 0
 margin-bottom = 0
 
 ; vim:ft=dosini
-;
-[module/right1]
-type = custom/text
-content-background = #4b5263
-content-foreground = #363949
-content = "%{T3} %{T-}"
-
-[module/right2]
-type = custom/text
-content-background = #3f4252
-content-foreground = #454b68
-content = "%{T3} %{T-}"
-
-[module/right3]
-type = custom/text
-content-background = #454b68
-content-foreground = #454b68
-content = "%{T3} %{T-}"
-
-[module/right4]
-type = custom/text
-content-background = #363949
-content-foreground = #3f4252
-content = "%{T3} %{T-}"
-
-[module/left1]
-type = custom/text
-content-background = #000000000
-content-foreground = #454b68
-content = "%{T3}%{T-}"
-
-[module/right5]
-type = custom/text
-content-background = {colors.background} 
-content-foreground = #454b68
-content = "%{T3} %{T-}"
-
-[module/left2]
-type = custom/text
-content-background = #00000000
-content-foreground = #333749
-content = "%{T3}%{T-}"
 
 [module/weather]
 type = custom/script
