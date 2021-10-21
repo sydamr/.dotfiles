@@ -580,28 +580,9 @@ format-prefix-foreground = #00ff9a
 exec = weather
 format-background = #4b5263
 format-foreground = #00ff9a
-click-left = kitty --hold -e curl -sf "https://wttr.in/~Ampang+Jaya"
+click-left = kitty --hold -e curl -sf "https://wttr.in/"
 format-underline = ${colors.background}
 format-overline = ${colors.background}
-
-[module/right6]
-type = custom/text
-content-background = #3f4252
-content-foreground = ${colors.color1}
-content = "%{T3} %{T-}"
-
-[module/notification-reddit]
-type = custom/script
-exec = ~/polybar-scripts/notification-reddit.sh
-interval = 60
-format-background = #ff9f6c
-format-foreground = #000000
-
-[module/right7]
-type = custom/text
-content-background = #c4ff76
-content-foreground = #ff9f6c
-content = "%{T3} %{T-}"
 
 [module/updates-pacman-aurhelper]
 type = custom/script
@@ -613,62 +594,6 @@ click-left = kitty --hold -e sudo pacman -Syu
 format-underline = ${colors.background}
 format-overline = ${colors.background}
 
-[module/right8]
-type = custom/text
-content-background = #000000000
-content-foreground = ${colors.color1}
-content = "%{T3}%{T-}"
-
-[module/terminal]
-type = custom/text 
-content-foreground = #000000
-content-background = #7dcfff
-content = "  "
-click-left = kitty
-content-underline = #61b0ef
-
-
-[module/right9]
-type = custom/text
-content-background = #000000000
-content-foreground = #61afef
-content = "%{T3}%{T-}"
-
-[module/left3]
-type = custom/text
-content-background = #00000000
-content-foreground = #61afef
-content = "%{T3}%{T-}"
-
-[module/rofi]
-type = custom/text
-content-foreground = #000000
-content-background = #d41e4b
-content = "  "
-click-left = rofi -show drun -show-icons
-
-[module/space]
-type = custom/text
-content-background = #000000000 
-content = "  " 
-
-
-[module/browser]
-type = custom/text
-content-foreground = #000000 
-content-background = #7dcfff
-content-underline = #61b0ef
-content = "  " 
-click-left = librewolf
-
-[module/nemo]
-type = custom/text
-content-foreground = #000000 
-content-background = #7dcfff
-content-underline = #61b0ef
-content = "  " 
-click-left = nemo
-
 [module/free]
 type = custom/script
 exec = ~/ram
@@ -678,12 +603,6 @@ format-background = ${colors.color1}
 format-foreground = #a8ff00
 format-underline = ${colors.background}
 format-overline = ${colors.background}
-
-[module/left4]
-type = custom/text
-content-background = #00000000
-content-foreground = #393b44
-content = "%{T3}%{T-}"
 
 [module/left0]
 type = custom/text
