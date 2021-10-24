@@ -1,3 +1,0 @@
-#!/bin/bash
-mv ~/.config/kitty/kitty.conf ~/.config/kitty/1
-mv ~/.config/kitty/config ~/.config/kitty/kitty.conf
